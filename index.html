@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberGuard — Security Toolkit</title>
+    <meta name="description" content="Professional cybersecurity toolkit with password checker, hasher, JWT decoder, IP lookup, cipher tools, and AI chatbot.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ===== SIDEBAR NAV ===== -->
+<aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+        <div class="brand-icon">⚡</div>
+        <span class="brand-name">CyberGuard</span>
+    </div>
+    <nav class="sidebar-nav">
+        <button class="nav-item active" data-page="dashboard">
+            <span class="nav-icon">🏠</span><span class="nav-label">Dashboard</span>
+        </button>
+        <div class="nav-group-label">Security Tools</div>
+        <button class="nav-item" data-page="password">
+            <span class="nav-icon">🔑</span><span class="nav-label">Password Checker</span>
+        </button>
+        <button class="nav-item" data-page="hasher">
+            <span class="nav-icon">#️⃣</span><span class="nav-label">Hash Generator</span>
+        </button>
+        <button class="nav-item" data-page="dehasher">
+            <span class="nav-icon">🔓</span><span class="nav-label">Hash Decoder</span>
+        </button>
+        <button class="nav-item" data-page="base64">
+            <span class="nav-icon">🔤</span><span class="nav-label">Base64 Tool</span>
+        </button>
+        <button class="nav-item" data-page="caesar">
+            <span class="nav-icon">🔐</span><span class="nav-label">Caesar Cipher</span>
+        </button>
+        <div class="nav-group-label">Analysis</div>
+        <button class="nav-item" data-page="jwt">
+            <span class="nav-icon">🪙</span><span class="nav-label">JWT Decoder</span>
+        </button>
+        <button class="nav-item" data-page="iplookup">
+            <span class="nav-icon">🌐</span><span class="nav-label">IP Lookup</span>
+        </button>
+        <button class="nav-item" data-page="url">
+            <span class="nav-icon">🔗</span><span class="nav-label">URL Encoder</span>
+        </button>
+        <div class="nav-group-label">Learning</div>
+        <button class="nav-item" data-page="glossary">
+            <span class="nav-icon">📖</span><span class="nav-label">Cyber Glossary</span>
+        </button>
+    </nav>
+</aside>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="main-wrap">
+    <header class="topbar">
+        <button class="menu-toggle" id="menuToggle">☰</button>
+        <div class="topbar-title" id="topbarTitle">Dashboard</div>
+        <div class="topbar-actions">
+            <button class="chat-open-btn" id="chatOpenBtn">
+                <span>🤖</span> CyberGuard AI
+            </button>
+        </div>
+    </header>
+
+    <main class="page-container" id="pageContainer">
+
+        <!-- PAGE: DASHBOARD -->
+        <section class="page active" id="page-dashboard">
+            <div class="hero-banner">
+                <div class="hero-content">
+                    <div class="hero-badge">⚡ Professional Security Suite</div>
+                    <h1>CyberGuard <span class="gradient-text">Toolkit</span></h1>
+                    <p>A comprehensive suite of cybersecurity tools powered by AI. Analyze passwords, generate hashes, decode tokens, and get expert guidance.</p>
+                    <div class="hero-btns">
+                        <button class="btn-primary" data-page="password">Get Started</button>
+                        <button class="btn-ghost" data-page="glossary">Learn More</button>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="terminal-card">
+                        <div class="terminal-bar"><span></span><span></span><span></span></div>
+                        <div class="terminal-body">
+                            <div class="t-line"><span class="t-prompt">$</span> scan --target localhost</div>
+                            <div class="t-line success">✓ No open vulnerabilities found</div>
+                            <div class="t-line"><span class="t-prompt">$</span> hash --algo sha256 "mypassword"</div>
+                            <div class="t-line success">✓ 89e01536ac207279409d4de1e5253e01...</div>
+                            <div class="t-line"><span class="t-prompt">$</span> ai --query "What is SQL injection?"</div>
+                            <div class="t-line typing">▌</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-grid">
+                <div class="dash-card" data-page="password">
+                    <div class="dash-card-icon" style="background:linear-gradient(135deg,#6366f1,#8b5cf6)">🔑</div>
+                    <h3>Password Checker</h3>
+                    <p>Analyze strength, entropy and estimated crack time</p>
+                    <span class="dash-card-link">Open Tool →</span>
+                </div>
+                <div class="dash-card" data-page="hasher">
+                    <div class="dash-card-icon" style="background:linear-gradient(135deg,#0ea5e9,#06b6d4)">#️⃣</div>
+                    <h3>Hash Generator</h3>
+                    <p>Generate MD5, SHA-1, SHA-256, SHA-512 hashes</p>
+                    <span class="dash-card-link">Open Tool →</span>
+                </div>
+                <div class="dash-card" data-page="dehasher">
+                    <div class="dash-card-icon" style="background:linear-gradient(135deg,#10b981,#059669)">🔓</div>
+                    <h3>Hash Decoder</h3>
+                    <p>Reverse hashes with our rainbow table dictionary</p>
+                    <span class="dash-card-link">Open Tool →</span>
+                </div>
+                <div class="dash-card" data-page="jwt">
+                    <div class="dash-card-icon" style="background:linear-gradient(135deg,#f59e0b,#d97706)">🪙</div>
+                    <h3>JWT Decoder</h3>
+                    <p>Inspect and decode JSON Web Tokens instantly</p>
+                    <span class="dash-card-link">Open Tool →</span>
+                </div>
+                <div class="dash-card" data-page="iplookup">
+                    <div class="dash-card-icon" style="background:linear-gradient(135deg,#ef4444,#dc2626)">🌐</div>
+                    <h3>IP Lookup</h3>
+                    <p>Geolocate any IP address with ISP and region info</p>
+                    <span class="dash-card-link">Open Tool →</span>
+                </div>
+                <div class="dash-card" data-page="caesar">
+                    <div class="dash-card-icon" style="background:linear-gradient(135deg,#ec4899,#db2777)">🔐</div>
+                    <h3>Caesar Cipher</h3>
+                    <p>Encrypt and decrypt classic shift cipher messages</p>
+                    <span class="dash-card-link">Open Tool →</span>
+                </div>
+                <div class="dash-card" data-page="base64">
+                    <div class="dash-card-icon" style="background:linear-gradient(135deg,#14b8a6,#0d9488)">🔤</div>
+                    <h3>Base64</h3>
+                    <p>Encode and decode Base64 strings instantly</p>
+                    <span class="dash-card-link">Open Tool →</span>
+                </div>
+                <div class="dash-card" data-page="url">
+                    <div class="dash-card-icon" style="background:linear-gradient(135deg,#8b5cf6,#7c3aed)">🔗</div>
+                    <h3>URL Encoder</h3>
+                    <p>Encode and decode URL strings securely</p>
+                    <span class="dash-card-link">Open Tool →</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE: PASSWORD -->
+        <section class="page" id="page-password">
+            <div class="page-header"><h2>Password Strength Checker</h2><p>Test your password against real-world security standards</p></div>
+            <div class="tool-card">
+                <div class="input-row">
+                    <div class="input-wrap flex-1">
+                        <input type="password" id="pwInput" class="tool-input" placeholder="Enter a password to analyze…">
+                        <button class="eye-btn" id="eyeBtn" title="Toggle visibility">👁</button>
+                    </div>
+                    <button class="btn-primary" id="checkPwBtn">Analyze</button>
+                </div>
+                <div id="pwResult" class="pw-result hidden">
+                    <div class="strength-header">
+                        <span id="strengthLabel" class="strength-label"></span>
+                        <span id="entropyLabel" class="entropy-label"></span>
+                    </div>
+                    <div class="strength-bar-track"><div class="strength-bar-fill" id="strengthFill"></div></div>
+                    <div class="criteria-grid" id="criteriaGrid"></div>
+                    <div class="crack-time-box">
+                        <span class="crack-label">⏱ Estimated Crack Time:</span>
+                        <span id="crackTime" class="crack-value"></span>
+                    </div>
+                    <div id="pwFeedback" class="pw-feedback"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE: HASHER -->
+        <section class="page" id="page-hasher">
+            <div class="page-header"><h2>Hash Generator</h2><p>Generate cryptographic hashes for any text input</p></div>
+            <div class="tool-card">
+                <textarea id="hashInput" class="tool-textarea" placeholder="Enter text to hash…" rows="4"></textarea>
+                <div class="algo-checks">
+                    <label class="check-chip"><input type="checkbox" value="md5" checked> MD5</label>
+                    <label class="check-chip"><input type="checkbox" value="sha1" checked> SHA-1</label>
+                    <label class="check-chip"><input type="checkbox" value="sha256" checked> SHA-256</label>
+                    <label class="check-chip"><input type="checkbox" value="sha512"> SHA-512</label>
+                </div>
+                <button class="btn-primary" id="hashBtn">Generate Hashes</button>
+                <div id="hashResults" class="hash-results hidden"></div>
+            </div>
+        </section>
+
+        <!-- PAGE: DEHASHER -->
+        <section class="page" id="page-dehasher">
+            <div class="page-header"><h2>Hash Decoder</h2><p>Reverse-lookup hashes using our curated dictionary</p></div>
+            <div class="tool-card">
+                <div class="info-banner">⚠️ Hashes are one-way functions. This tool uses a dictionary attack on common passwords.</div>
+                <div class="input-row">
+                    <input type="text" id="dehashInput" class="tool-input flex-1" placeholder="Paste a hash to decode…">
+                    <button class="btn-primary" id="dehashBtn">Decode</button>
+                </div>
+                <div id="dehashResult" class="result-panel hidden"></div>
+            </div>
+        </section>
+
+        <!-- PAGE: BASE64 -->
+        <section class="page" id="page-base64">
+            <div class="page-header"><h2>Base64 Encoder / Decoder</h2><p>Convert text to and from Base64 encoding</p></div>
+            <div class="tool-card two-col">
+                <div class="col-panel">
+                    <label class="panel-label">Input</label>
+                    <textarea id="b64Input" class="tool-textarea" placeholder="Enter text here…" rows="8"></textarea>
+                    <div class="btn-row">
+                        <button class="btn-primary" id="b64EncodeBtn">Encode →</button>
+                        <button class="btn-secondary" id="b64DecodeBtn">← Decode</button>
+                    </div>
+                </div>
+                <div class="col-panel">
+                    <label class="panel-label">Output</label>
+                    <textarea id="b64Output" class="tool-textarea mono" placeholder="Result appears here…" rows="8" readonly></textarea>
+                    <button class="btn-copy" id="b64CopyBtn">Copy</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE: CAESAR CIPHER -->
+        <section class="page" id="page-caesar">
+            <div class="page-header"><h2>Caesar Cipher</h2><p>Classic ROT cipher — encrypt or decrypt messages with a shift key</p></div>
+            <div class="tool-card two-col">
+                <div class="col-panel">
+                    <label class="panel-label">Input Text</label>
+                    <textarea id="caesarInput" class="tool-textarea" placeholder="Enter message…" rows="8"></textarea>
+                    <div class="shift-row">
+                        <label class="panel-label">Shift: <span id="shiftVal">3</span></label>
+                        <input type="range" id="shiftRange" min="1" max="25" value="3" class="shift-slider">
+                    </div>
+                    <div class="btn-row">
+                        <button class="btn-primary" id="caesarEncBtn">Encrypt →</button>
+                        <button class="btn-secondary" id="caesarDecBtn">← Decrypt</button>
+                    </div>
+                </div>
+                <div class="col-panel">
+                    <label class="panel-label">Output</label>
+                    <textarea id="caesarOutput" class="tool-textarea mono" placeholder="Result appears here…" rows="8" readonly></textarea>
+                    <button class="btn-copy" id="caesarCopyBtn">Copy</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE: JWT -->
+        <section class="page" id="page-jwt">
+            <div class="page-header"><h2>JWT Decoder</h2><p>Decode and inspect JSON Web Token payloads</p></div>
+            <div class="tool-card">
+                <textarea id="jwtInput" class="tool-textarea mono" placeholder="Paste your JWT token here… (eyJ…)" rows="4"></textarea>
+                <button class="btn-primary" id="jwtDecodeBtn">Decode JWT</button>
+                <div id="jwtResult" class="jwt-result hidden">
+                    <div class="jwt-part">
+                        <div class="jwt-part-label header-label">Header</div>
+                        <pre id="jwtHeader" class="json-box"></pre>
+                    </div>
+                    <div class="jwt-part">
+                        <div class="jwt-part-label payload-label">Payload</div>
+                        <pre id="jwtPayload" class="json-box"></pre>
+                    </div>
+                    <div class="jwt-part">
+                        <div class="jwt-part-label sig-label">Signature</div>
+                        <pre id="jwtSig" class="json-box mono-sm"></pre>
+                    </div>
+                </div>
+                <div id="jwtError" class="error-panel hidden"></div>
+            </div>
+        </section>
+
+        <!-- PAGE: IP LOOKUP -->
+        <section class="page" id="page-iplookup">
+            <div class="page-header"><h2>IP Geolocation Lookup</h2><p>Trace any IP address to its geographic location and ISP</p></div>
+            <div class="tool-card">
+                <div class="input-row">
+                    <input type="text" id="ipInput" class="tool-input flex-1" placeholder="Enter an IP address (e.g. 8.8.8.8)">
+                    <button class="btn-primary" id="ipLookupBtn">Lookup</button>
+                </div>
+                <div id="ipResult" class="ip-result hidden"></div>
+            </div>
+        </section>
+
+        <!-- PAGE: URL ENCODER -->
+        <section class="page" id="page-url">
+            <div class="page-header"><h2>URL Encoder / Decoder</h2><p>Safely encode and decode URLs and query parameters</p></div>
+            <div class="tool-card two-col">
+                <div class="col-panel">
+                    <label class="panel-label">Input</label>
+                    <textarea id="urlInput" class="tool-textarea" placeholder="Enter URL or text…" rows="8"></textarea>
+                    <div class="btn-row">
+                        <button class="btn-primary" id="urlEncBtn">Encode →</button>
+                        <button class="btn-secondary" id="urlDecBtn">← Decode</button>
+                    </div>
+                </div>
+                <div class="col-panel">
+                    <label class="panel-label">Output</label>
+                    <textarea id="urlOutput" class="tool-textarea mono" placeholder="Result appears here…" rows="8" readonly></textarea>
+                    <button class="btn-copy" id="urlCopyBtn">Copy</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE: GLOSSARY -->
+        <section class="page" id="page-glossary">
+            <div class="page-header"><h2>Cyber Security Glossary</h2><p>Essential terms and definitions every security professional should know</p></div>
+            <div class="glossary-search-wrap">
+                <input type="text" id="glossarySearch" class="tool-input" placeholder="Search terms…">
+            </div>
+            <div class="glossary-grid" id="glossaryGrid"></div>
+        </section>
+
+    </main>
+</div>
+
+<!-- ===== CHATBOT ===== -->
+<div class="chatbot-overlay hidden" id="chatOverlay"></div>
+<div class="chatbot-panel hidden" id="chatPanel">
+    <div class="chat-header">
+        <div class="chat-avatar">🤖</div>
+        <div class="chat-title-wrap">
+            <div class="chat-title">CyberGuard AI</div>
+            <div class="chat-subtitle" id="chatStatus">Powered by Gemini</div>
+        </div>
+        <button class="chat-close-btn" id="chatCloseBtn">✕</button>
+    </div>
+    <div class="chat-messages" id="chatMessages">
+        <div class="chat-msg ai">
+            <div class="msg-avatar">🤖</div>
+            <div class="msg-bubble">
+                <strong>Hello! I'm CyberGuard AI.</strong><br>I can help you with cybersecurity questions, explain vulnerabilities, guide you through security concepts, and much more. What would you like to know?
+                <div class="quick-prompts">
+                    <button class="quick-btn" data-q="What is SQL injection and how to prevent it?">SQL Injection</button>
+                    <button class="quick-btn" data-q="Explain OWASP Top 10 vulnerabilities">OWASP Top 10</button>
+                    <button class="quick-btn" data-q="How does a man-in-the-middle attack work?">MITM Attack</button>
+                    <button class="quick-btn" data-q="Best practices for password security">Password Tips</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="chat-input-area">
+        <div class="chat-input-wrap">
+            <textarea id="chatInput" class="chat-textarea" placeholder="Ask anything about cybersecurity…" rows="1"></textarea>
+            <button class="chat-send-btn" id="chatSendBtn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            </button>
+        </div>
+        <div class="chat-hint">Press Enter to send · Shift+Enter for new line</div>
+    </div>
+</div>
+
+<script src="scripts.js"></script>
+</body>
+</html>
